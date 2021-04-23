@@ -30,6 +30,18 @@
         </encoder>
     </appender>
 
+    <appender name="logappender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.log.path:-/auth/logs}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.log.path:-/auth/logs}/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxFileSize>${log.max.file.size:-64}MB</maxFileSize>
+            <maxHistory>${log.max.history:-10}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-5level | %d{yyyy-MM-dd HH:mm.ss.SSS} | %logger{35}[%method:%line][%thread] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
     <logger name="java.sql" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
@@ -70,5 +82,6 @@
     <root level="${LOG_LEVEL:-INFO}">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="STDERR" />
+	<appender-ref ref="logappender" />
     </root>
 </configuration>
