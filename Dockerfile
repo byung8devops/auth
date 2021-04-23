@@ -19,4 +19,4 @@ COPY target/auth-0.0.1-SNAPSHOT.jar /auth/lib/app.jar
 RUN chown -R bd:bd /auth
 USER bd
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","-Dspring.config.location=/auth/conf/application.yml","/auth/lib/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","-Dspring.config.location=/auth/conf/application.yml","-Duser.timezone=Asia/Seoul","/auth/lib/app.jar"]
