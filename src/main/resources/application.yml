@@ -24,11 +24,8 @@ spring:
   profiles: prod
   pid:
     file: /auth/run/auth.pid
-membership:
-  server: membership
-  portal: 8080
 redis:
-  server: auth-redis
+  server: 10.10.50.110
   port: 6379
   password: 1q2w3e4r5t
 rest:
@@ -58,9 +55,6 @@ redis:
   server: 192.168.0.101
   port: 31379
   password: 1q2w3e4r5t
-membership:
-  server: localhost
-  portal: 8084
 rest:
   timeout:
     connection: 2000
@@ -79,4 +73,3 @@ server:
       charset: UTF-8
       enabled: true
       force: true
- 
