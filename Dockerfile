@@ -1,5 +1,9 @@
 FROM openjdk:8-jdk-alpine
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Seoul
+
+RUN apt-get install -y tzdata
 RUN addgroup -g 1000 bd
 RUN adduser -u 1000 -G bd -D bd
 
