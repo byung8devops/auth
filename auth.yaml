@@ -19,20 +19,8 @@ spec:
         app: auth
     spec:
       containers:
-      - image: kube-01.bd.com:5000/fitness/auth:0.1
+      - image: gw01.bd.com:5000/fitness/auth:0.1
         name: auth
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 20
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 10
-          periodSeconds: 5
         resources: {}
 status: {}
 ---
@@ -48,11 +36,12 @@ metadata:
 spec:
   ports:
   - name: http-svc
+    nodePort: 32026
     port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
     app: auth
-  type: ClusterIP
+  type: NodePort
 status:
   loadBalancer: {}
