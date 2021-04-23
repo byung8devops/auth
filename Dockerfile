@@ -1,9 +1,11 @@
 FROM openjdk:8-jdk-alpine
 
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Seoul
+RUN apk add tzdata
+RUN cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+RUN echo "Asia/Seoul" > /etc/timezone
 
-RUN apt-get install -y tzdata
+ENV LANG=ko_KR.UTF-8
+
 RUN addgroup -g 1000 bd
 RUN adduser -u 1000 -G bd -D bd
 
