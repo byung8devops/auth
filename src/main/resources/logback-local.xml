@@ -12,6 +12,19 @@
     	</encoder>
   	</appender>
     
+    <appender name="dailyRollingFileAppender"
+	class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<file>${log.file.path:-D://dev/work/evthook/logs}/application.log</file>
+	<prudent>true</prudent>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<fileNamePattern>${log.file.path:-D://dev/work/evthook/logs}/application-%d{yyyyMMdd}.log</fileNamePattern>
+		<maxHistory>10</maxHistory>
+	</rollingPolicy>
+	<encoder>
+		<pattern>%-5level | %d{yyyy-MM-dd HH:mm.ss.SSS} | %logger{35}[%method:%line][%thread] - %msg%n</pattern>
+	</encoder>
+    </appender>
+    
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     	<target>System.out</target>
     	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -71,5 +84,6 @@
     <root level="${LOG_LEVEL:-DEBUG}">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="STDERR" />
+	<appender-ref ref="dailyRollingFileAppender" />
     </root>
 </configuration>
