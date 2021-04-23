@@ -52,8 +52,8 @@ spring:
   pid:
     file: E://dev/work/auth/run/auth.pid
 redis:
-  server: 192.168.0.101
-  port: 31379
+  server: 192.168.0.2
+  port: 16379
   password: 1q2w3e4r5t
 rest:
   timeout:
