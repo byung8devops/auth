@@ -33,7 +33,7 @@
     <appender name="logappender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.log.path:-/auth/logs}/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${log.log.path:-/auth/logs}/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${log.log.path:-/auth/logs}/application-{yyyy-MM-dd}.log</fileNamePattern>
             <maxFileSize>${log.max.file.size:-64}MB</maxFileSize>
             <maxHistory>${log.max.history:-10}</maxHistory>
         </rollingPolicy>
