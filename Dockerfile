@@ -1,9 +1,11 @@
 FROM openjdk:8-jdk-alpine
 
-RUN apk add tzdata
-RUN cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN echo "Asia/Seoul" > /etc/timezone
+ARG TIMEZONE="Asia/Seoul"
 
+RUN apk add tzdata
+RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
+RUN echo "Asia/Seoul" > /etc/timezone
+RUN "date"
 ENV LANG=ko_KR.UTF-8
 
 RUN addgroup -g 1000 bd
@@ -19,4 +21,3 @@ RUN chown -R bd:bd /auth
 USER bd
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","-Dspring.config.location=/auth/conf/application.yml","/auth/lib/app.jar"]
-
