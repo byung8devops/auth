@@ -30,17 +30,16 @@
         </encoder>
     </appender>
 
-    <appender name="dailyRollingFileAppender"
-	class="ch.qos.logback.core.rolling.RollingFileAppender">
-	<file>${log.file.path:-/auth/logs}/application.log</file>
-	<prudent>true</prudent>
+    <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>false</append>
+		<file>${log.file.path:-/auth/logs}/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-		<fileNamePattern>${log.file.path:-/auth/logs}/application-%d{yyyyMMdd}.log</fileNamePattern>
-		<maxHistory>10</maxHistory>
-	</rollingPolicy>
-	<encoder>
-		<pattern>%-5level | %d{yyyy-MM-dd HH:mm.ss.SSS} | %logger{35}[%method:%line][%thread] - %msg%n</pattern>
-	</encoder>
+			<fileNamePattern>${log.file.path:-/auth/logs}/application-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-5level | %d{yyyy-MM-dd HH:mm.ss.SSS} | %logger{35}[%method:%line][%thread] - %msg%n</pattern>
+		</encoder>
     </appender>
     
     <logger name="java.sql" additivity="false">
