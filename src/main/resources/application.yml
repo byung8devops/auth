@@ -50,7 +50,7 @@ server:
 spring:
   profiles: local
   pid:
-    file: E://dev/work/auth/run/auth.pid
+    file: D://dev/work/auth/run/auth.pid
 redis:
   server: 192.168.0.2
   port: 16379
