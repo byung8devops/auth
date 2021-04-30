@@ -32,7 +32,7 @@ rest:
   timeout:
     connection: 2000
     read: 2000
-  server: 10.10.50.110
+  server: 10.10.50.114
   port: 8080
 logging:
   config: classpath:logback-prod.xml
