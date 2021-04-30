@@ -23,7 +23,7 @@ spring:
 spring:
   profiles: prod
   pid:
-    file: /auth/run/auth.pid
+    file: /data/auth/run/auth.pid
 redis:
   server: 10.10.50.110
   port: 6379
@@ -38,7 +38,7 @@ logging:
   config: classpath:logback-prod.xml
 log:
   file:
-    path: "/auth/logs"
+    path: "/data/auth/logs"
 server:
   port: 8080
   servlet:
